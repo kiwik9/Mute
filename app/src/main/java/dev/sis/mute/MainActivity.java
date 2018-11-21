@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     actionBar = getSupportActionBar();
-                    actionBar.setTitle("Diccinario");
+                    actionBar.setTitle("Diccionario");
                     DiccionarioFragment fragment = new DiccionarioFragment();
                     android.support.v4.app.FragmentTransaction tran =
                             getSupportFragmentManager().beginTransaction();
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.navigation_dashboard:
                     actionBar = getSupportActionBar();
                     actionBar.setTitle("Traductor");
-                    DiccionarioFragment fragment2 = new DiccionarioFragment();
+                    TraductorFragment fragment2 = new TraductorFragment();
                     android.support.v4.app.FragmentTransaction tran2 =
                             getSupportFragmentManager().beginTransaction();
                     tran2.replace(R.id.contenedor, fragment2);
@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         actionBar = getSupportActionBar();
         actionBar.setTitle("Traductor");
-        DiccionarioFragment fragment2 = new DiccionarioFragment();
+        TraductorFragment fragment2 = new TraductorFragment();
         android.support.v4.app.FragmentTransaction tran2 =
                 getSupportFragmentManager().beginTransaction();
         tran2.replace(R.id.contenedor, fragment2);
