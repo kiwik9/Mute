@@ -2,24 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/i_music"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_sync"
         android:title="" />
 
     <item
         android:id="@+id/i_backup"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_content_copy"
         android:title="" />
     <!--must set the item title to empty-->
     <item
         android:id="@+id/i_empty"
-        android:icon="@drawable/ic_home_black_24dp"
         android:title="" />
     <item
         android:id="@+id/i_favor"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_volume_up_black_24dp"
         android:title="" />
     <item
         android:id="@+id/i_visibility"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_text"
         android:title="" />
 </menu>

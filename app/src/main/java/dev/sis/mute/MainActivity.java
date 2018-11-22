@@ -10,11 +10,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.github.clans.fab.FloatingActionMenu;
+
 import helpers.BottomNavigationViewHelper;
 
 public class MainActivity extends AppCompatActivity {
 
     ActionBar actionBar;
+    BottomNavigationView navigation;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -22,25 +25,31 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.navigation_home:
+                case R.id.diccionariomenu:
                     actionBar = getSupportActionBar();
                     actionBar.setTitle("Diccionario");
+                    item.isChecked();
                     DiccionarioFragment fragment = new DiccionarioFragment();
                     android.support.v4.app.FragmentTransaction tran =
                             getSupportFragmentManager().beginTransaction();
                     tran.replace(R.id.contenedor, fragment);
                     tran.commit();
                     return true;
-                case R.id.navigation_dashboard:
+                case R.id.traductormenu:
                     actionBar = getSupportActionBar();
                     actionBar.setTitle("Traductor");
+                    item.isChecked();
                     TraductorFragment fragment2 = new TraductorFragment();
                     android.support.v4.app.FragmentTransaction tran2 =
                             getSupportFragmentManager().beginTransaction();
                     tran2.replace(R.id.contenedor, fragment2);
                     tran2.commit();
                     return true;
-                case R.id.navigation_notifications:
+                case R.id.listasmenu:
+
+                    return true;
+
+                case R.id.historialmenu:
 
                     return true;
             }
@@ -53,12 +62,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        BottomNavigationView navigation =  findViewById(R.id.navigation);
+        navigation =  findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(navigation);
 
+
         actionBar = getSupportActionBar();
         actionBar.setTitle("Traductor");
+        navigation.setSelectedItemId(R.id.traductormenu);
         TraductorFragment fragment2 = new TraductorFragment();
         android.support.v4.app.FragmentTransaction tran2 =
                 getSupportFragmentManager().beginTransaction();

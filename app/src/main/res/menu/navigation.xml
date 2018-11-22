@@ -2,19 +2,19 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
-        android:title="@string/title_home" />
+        android:id="@+id/diccionariomenu"
+        android:title="Diccionario" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:title="@string/title_dashboard" />
+        android:id="@+id/traductormenu"
+        android:title="Traductor" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:title="@string/title_notifications" />
+        android:id="@+id/listasmenu"
+        android:title="Listas" />
 
     <item
-        android:id="@+id/item4"
-        android:title="@string/title_notifications" />
+        android:id="@+id/historialmenu"
+        android:title="Historial" />
 
 </menu>

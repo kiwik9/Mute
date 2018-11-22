@@ -17,14 +17,15 @@
             android:id="@+id/textoTraductor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
+            android:background="@android:color/white"
             android:gravity="top|start"
             android:hint=""
-            android:lines="14"
+            android:lines="9"
             android:padding="16dp"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-            android:textSize="32sp" />
+            android:textSize="40sp" />
+
     </LinearLayout>
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -50,27 +51,27 @@
             android:paddingBottom="60dp"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            fab:menu_backgroundColor="#ccffffff"
+            fab:menu_backgroundColor="@android:color/transparent"
             fab:menu_colorNormal="#FFB700"
-            fab:menu_fab_label="Menu label"
+            fab:menu_fab_label="Menu"
             fab:menu_labels_ellipsize="end"
             fab:menu_labels_singleLine="true">
 
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fab2"
+                android:id="@+id/fab1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_home_black_24dp"
+                android:src="@drawable/ic_share_black_24dp"
                 fab:fab_colorNormal="#FFB700"
                 fab:fab_label="Guardar"
                 fab:fab_size="mini"
                 fab:menu_backgroundColor="#ccffffff" />
 
             <com.github.clans.fab.FloatingActionButton
-                android:id="@+id/fab3"
+                android:id="@+id/fab2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_notifications_black_24dp"
+                android:src="@drawable/ic_save_black_24dp"
                 fab:fab_colorNormal="#FFB700"
                 fab:fab_label="Enviar"
                 fab:fab_size="mini"

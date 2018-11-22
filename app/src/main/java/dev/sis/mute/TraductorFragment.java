@@ -22,6 +22,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.clans.fab.FloatingActionButton;
+import com.github.clans.fab.FloatingActionMenu;
+
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -31,10 +34,14 @@ import services.TSSManager;
 import static android.app.Activity.RESULT_OK;
 
 
-public class TraductorFragment extends Fragment {
+public class TraductorFragment extends Fragment implements View.OnClickListener {
     EditText textoTraductor;
     private static final int REQ_CODE_SPEECH_INPUT = 100;
     TSSManager ttsManager = null;
+    private FloatingActionButton fab1;
+    private FloatingActionButton fab2;
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup
             container,
@@ -47,6 +54,12 @@ public class TraductorFragment extends Fragment {
         textoTraductor = view.findViewById(R.id.textoTraductor);
         ttsManager = new TSSManager();
         ttsManager.init(getContext());
+
+        fab1 = view.findViewById(R.id.fab1);
+        fab2 = view.findViewById(R.id.fab2);
+        fab1.setOnClickListener(this);
+        fab2.setOnClickListener(this);
+
 
         try{
             String fuente = "fonts/dedos2.TTF";
@@ -62,6 +75,24 @@ public class TraductorFragment extends Fragment {
         return view;
 
     }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.fab1:
+                Toast.makeText(getContext(),
+                        "Compartir",
+                        Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.fab2:
+                Toast.makeText(getContext(),
+                        "Guardar",
+                        Toast.LENGTH_SHORT).show();
+                break;
+        }
+    }
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
@@ -85,9 +116,6 @@ public class TraductorFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        Toast.makeText(getContext(),
-                "Paso por aqui",
-                Toast.LENGTH_SHORT).show();
         switch (requestCode) {
             case REQ_CODE_SPEECH_INPUT: {
                 if (resultCode == RESULT_OK && null != data) {
