@@ -1,10 +1,13 @@
 package dev.sis.mute;
 
 
+import android.content.ActivityNotFoundException;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.speech.RecognizerIntent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.Snackbar;
@@ -19,11 +22,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
 import helpers.BottomNavigationViewHelper;
+import services.TSSManager;
+
+import static android.app.Activity.RESULT_OK;
 
 
 public class TraductorFragment extends Fragment {
     EditText textoTraductor;
+    private static final int REQ_CODE_SPEECH_INPUT = 100;
+    TSSManager ttsManager = null;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup
             container,
@@ -34,7 +45,8 @@ public class TraductorFragment extends Fragment {
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         textoTraductor = view.findViewById(R.id.textoTraductor);
-
+        ttsManager = new TSSManager();
+        ttsManager.init(getContext());
 
         try{
             String fuente = "fonts/dedos2.TTF";
@@ -44,6 +56,7 @@ public class TraductorFragment extends Fragment {
         catch (Exception x)
         {
             Toast.makeText(getContext(), x.toString(), Toast.LENGTH_SHORT).show();
+
         }
 
         return view;
@@ -52,6 +65,39 @@ public class TraductorFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void startVoiceInput() {
+        Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, "es-ES");
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Ingrese el texto para la traduccion");
+        try {
+
+            getActivity().startActivityForResult(intent, REQ_CODE_SPEECH_INPUT);
+        } catch (ActivityNotFoundException a) {
+            Toast.makeText(getContext(),
+                    "Tú dispositivo no soporta el reconocimiento por voz",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        Toast.makeText(getContext(),
+                "Paso por aqui",
+                Toast.LENGTH_SHORT).show();
+        switch (requestCode) {
+            case REQ_CODE_SPEECH_INPUT: {
+                if (resultCode == RESULT_OK && null != data) {
+                    ArrayList<String> result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+                    textoTraductor.setText(result.get(0));
+                }
+                break;
+            }
+
+        }
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -69,11 +115,12 @@ public class TraductorFragment extends Fragment {
                     return true;
 
                 case R.id.i_empty:
-
+                    startVoiceInput();
                     return true;
 
                 case R.id.i_favor:
-
+                    String text = textoTraductor.getText().toString();
+                    ttsManager.initQueue(text);
                     return true;
 
                 case R.id.i_visibility:
@@ -84,5 +131,10 @@ public class TraductorFragment extends Fragment {
             return false;
         }
     };
+
+    public void onDestroy() {
+        super.onDestroy();
+        ttsManager.shutDown();
+    }
 
 }
