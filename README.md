@@ -240,6 +240,8 @@ En este pantalla se encontrará el historial de traducciones realizadas.
 ![](https://i.imgur.com/CQtdlyX.jpg)
 ![](https://i.imgur.com/Z2bK1zv.jpg)
 ![](https://i.imgur.com/8wKTyix.jpg)
+![](https://i.imgur.com/1ZAPGM2.jpg)
+![](https://i.imgur.com/6Xc9Grw.jpg)
 
 
 ---
