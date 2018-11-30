@@ -124,7 +124,7 @@ En este pantalla se encontrará el historial de traducciones realizadas.
  Nombre |Juegos de aprendizaje|
 | Usuario  | Usuario registrado |
 |Prioridad (Alta-Media-Baja)  | Media |
-| Descripción | El usuario al hacer click en el botón de Juegos de la sección Diccionario ingresará a la sección educativa de la aplicación donde se encontrarán 5 minijuegos.
+| Descripción | El usuario al hacer click en el botón de Juegos de la sección Diccionario ingresará a la sección educativa de la aplicación donde se encontrarán minijuegos.
 
 | Número | 8 |
 | ------ | ----------- |
