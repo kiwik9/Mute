@@ -10,7 +10,6 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.speech.RecognizerIntent;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +22,8 @@ import com.luseen.spacenavigation.SpaceNavigationView;
 import com.luseen.spacenavigation.SpaceOnClickListener;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
-import helpers.BottomNavigationViewHelper;
+import androidx.fragment.app.Fragment;
 import services.TSSManager;
 
 import static android.app.Activity.RESULT_OK;
@@ -46,11 +44,7 @@ public class TraductorFragment extends Fragment implements View.OnClickListener 
                              Bundle savedInstanceState) {
 
         View view =  inflater.inflate(R.layout.fragment_traductor, container, false);
-        /* Bu Navigation View
-        BottomNavigationView bottomNavigationView = view.findViewById(R.id.navigationtraductor);
-        bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
-        */
+
 
         textoTraductor = view.findViewById(R.id.textoTraductor);
         ttsManager = new TSSManager();
@@ -91,6 +85,7 @@ public class TraductorFragment extends Fragment implements View.OnClickListener 
                 switch (itemIndex)
                 {
                     case 0:
+                        textoTraductor.setText("");
 
                         break;
 
@@ -143,9 +138,8 @@ public class TraductorFragment extends Fragment implements View.OnClickListener 
                         Toast.LENGTH_SHORT).show();
                 break;
             case R.id.fab2:
-                Toast.makeText(getContext(),
-                        "Guardar",
-                        Toast.LENGTH_SHORT).show();
+
+
                 break;
         }
     }
@@ -190,38 +184,6 @@ public class TraductorFragment extends Fragment implements View.OnClickListener 
         ttsManager.shutDown();
     }
 
-    /* But Navigation View
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.i_music:
-
-                    return true;
-
-                case R.id.i_backup:
-
-                    return true;
-
-                case R.id.i_empty:
-                    startVoiceInput();
-                    return true;
-
-                case R.id.i_favor:
-                    String text = textoTraductor.getText().toString();
-                    ttsManager.initQueue(text);
-                    return true;
-
-                case R.id.i_visibility:
-
-                    return true;
-
-            }
-            return false;
-        }
-    };
-    */
 
 }

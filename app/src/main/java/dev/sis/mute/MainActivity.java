@@ -1,24 +1,42 @@
 package dev.sis.mute;
 
+
+import Utils.MutePreferences;
+import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.fragment.app.Fragment;
+
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.github.clans.fab.FloatingActionMenu;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Set;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import helpers.BottomNavigationViewHelper;
 
 public class MainActivity extends AppCompatActivity {
 
     ActionBar actionBar;
+    private MutePreferences prefs;
     BottomNavigationView navigation;
+    FragmentManager fragmentManager;
+    SharedPreferences prefsss;
+    FragmentTransaction fragmentTransaction;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -30,28 +48,37 @@ public class MainActivity extends AppCompatActivity {
                     actionBar = getSupportActionBar();
                     actionBar.setTitle("Diccionario");
                     item.isChecked();
-                    DiccionarioFragment fragment = new DiccionarioFragment();
-                    android.support.v4.app.FragmentTransaction tran =
-                            getSupportFragmentManager().beginTransaction();
-                    tran.replace(R.id.contenedor, fragment);
-                    tran.commit();
+                    fragmentManager = getSupportFragmentManager();
+                    fragmentTransaction = fragmentManager.beginTransaction();
+                    DiccionarioFragment starredFragment = new DiccionarioFragment();
+                    fragmentTransaction.replace(R.id.contenedor, starredFragment);
+                    fragmentTransaction.commit();
                     return true;
                 case R.id.traductormenu:
                     actionBar = getSupportActionBar();
-                    actionBar.setTitle("Traductor");
+                    actionBar.setTitle("Diccionario");
                     item.isChecked();
-                    TraductorFragment fragment2 = new TraductorFragment();
-                    android.support.v4.app.FragmentTransaction tran2 =
-                            getSupportFragmentManager().beginTransaction();
-                    tran2.replace(R.id.contenedor, fragment2);
-                    tran2.commit();
+                    fragmentManager = getSupportFragmentManager();
+                    fragmentTransaction = fragmentManager.beginTransaction();
+                    TraductorFragment starredFragment2 = new TraductorFragment();
+                    fragmentTransaction.replace(R.id.contenedor, starredFragment2);
+                    fragmentTransaction.commit();
                     return true;
                 case R.id.listasmenu:
+
+                    FirebaseAuth.getInstance().signOut();
+                    prefs.setString(MutePreferences.USUARIO_LOGUEADO, null);
+                    Intent xd = new Intent(MainActivity.this,LoginActivity.class);
+                    startActivity(xd);
+                    finish();
 
                     return true;
 
                 case R.id.historialmenu:
 
+                     xd = new Intent(MainActivity.this,JuegosActivity.class);
+                    startActivity(xd);
+                    finish();
                     return true;
             }
             return false;
@@ -67,15 +94,14 @@ public class MainActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         BottomNavigationViewHelper.disableShiftMode(navigation);
 
-
+        notificaciones();
         actionBar = getSupportActionBar();
         actionBar.setTitle("Traductor");
-        navigation.setSelectedItemId(R.id.traductormenu);
-        TraductorFragment fragment2 = new TraductorFragment();
-        android.support.v4.app.FragmentTransaction tran2 =
-                getSupportFragmentManager().beginTransaction();
-        tran2.replace(R.id.contenedor, fragment2);
-        tran2.commit();
+        fragmentManager = getSupportFragmentManager();
+        fragmentTransaction = fragmentManager.beginTransaction();
+        TraductorFragment starredFragment2 = new TraductorFragment();
+        fragmentTransaction.replace(R.id.contenedor, starredFragment2);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -107,6 +133,33 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        prefs = new MutePreferences(this);
+        String currentUser = prefs.getString(MutePreferences.USUARIO_LOGUEADO,null);
+        if(currentUser == null){
+            Intent intent = new Intent(this,LoginActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    public void notificaciones(){
+        NotificationCompat.Builder mBuilder;
+        NotificationManager mNotifyMgr =(NotificationManager) getApplicationContext().getSystemService(NOTIFICATION_SERVICE);
+        int icono = R.drawable.imgdicc;
+        Intent intent = new Intent(MainActivity.this, JuegosActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(MainActivity.this, 0,intent, 0);
+        mBuilder =new NotificationCompat.Builder(getApplicationContext())
+                .setContentIntent(pendingIntent)
+                .setSmallIcon(icono)
+                .setContentTitle("Mute-Game")
+                .setContentText("Sigue aprendiendo!")
+                .setVibrate(new long[] {100, 250, 100, 500})
+                .setAutoCancel(true);
+        mNotifyMgr.notify(1, mBuilder.build());
     }
 
 }

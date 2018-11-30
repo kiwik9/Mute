@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    tools:context=".MainActivity">
+
+
+    <androidx.cardview.widget.CardView
+
+        android:focusable="true"
+        android:clickable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:id="@+id/cardtop"
+        android:layout_width="0dp"
+        android:layout_height="205dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="145dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/undraw_gaming_6oy3" />
+
+            <Button
+                android:id="@+id/button"
+                android:background="#ffc107"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="8dp"
+                android:text="JUGAR"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="201dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:text="TextView"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/button"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView"
+                app:layout_constraintVertical_bias="0.68"
+                android:textColor="#1f1f1f"
+                tools:text="Preguntas y respuestas para ponerte a prueba." />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardright"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/cardtop">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:weightSum="6"
+            android:orientation="vertical"
+            android:layout_gravity="center">
+
+            <TextView
+                android:padding="4dp"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:textColor="#1f1f1f"
+                android:gravity="center"
+                android:text="Busca el par perdido detrás de los bloques.¿Serás capaz de encontrar dos iguales?"
+                />
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3"
+                android:src="@drawable/undraw_artificial_intelligence_upfn"
+                android:scaleType="centerCrop"/>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="192dp" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardleft"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="164dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/cardleft2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardtop">
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="84dp"
+                android:src="@drawable/undraw_personalization_triu"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Solitario"
+                android:textColor="#1f1f1f" />
+
+            <Button
+                android:id="@+id/btnsolitario"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="8dp"
+                android:background="#ffc107"
+                android:text="JUGAR"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardleft2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="164dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardleft" >
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="84dp"
+                android:src="@drawable/undraw_couple_a7s9"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Versus"
+                android:textColor="#1f1f1f" />
+
+            <Button
+                android:id="@+id/btnversus"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginTop="8dp"
+                android:background="#ffc107"
+                android:text="JUGAR"
+                android:textColor="#fff"
+                android:textStyle="bold" />
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

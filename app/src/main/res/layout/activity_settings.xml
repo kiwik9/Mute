@@ -1,9 +1,156 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SettingsActivity">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Notificaciones"
+        android:layout_marginLeft="5dp"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="12dp"/>
+
+    <Switch
+        android:id="@+id/notificacionJuego"
+        android:textSize="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Juegos" />
+        <Switch
+        android:id="@+id/notificacionesParacontinuar"
+        android:textSize="16dp"
+            android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Aprendizaje" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Datos"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Correo"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txtCorreoSet"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginLeft="50dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Correo"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/txtNombreSet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_marginLeft="50dp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Contraseña"
+        android:layout_weight="2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:textSize="16dp"
+        android:textStyle="bold"/>
+
+        <Button
+            android:id="@+id/btnCambiarContraseña"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Cambiar"
+
+            android:layout_marginLeft="50dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estilo"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginLeft="5dp"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Estilo"
+            android:layout_weight="1"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_marginLeft="100dp"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <Switch
+        android:id="@+id/modonoche"
+        android:textSize="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Modo nocturno" />
+
+
+</LinearLayout>
