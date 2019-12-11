@@ -1,10 +1,5 @@
 # Aplicacion móvil para lenguaje de señas
 
-### INTEGRANTES:
-*Peña Pastrana Christine
-*Perez Rabinez Julio
-*Maqui Victoriano Cesar
-
 ---
 ### OBJETIVO:
 
