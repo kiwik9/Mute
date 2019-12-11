@@ -1,6 +1,5 @@
 # Aplicacion móvil para lenguaje de señas
 
----
 ### OBJETIVO:
 
 Realizar un proyecto para Android desarrollado en Java, elegido por el usuario donde se aplique lo aprendido en el curso, el alcance del proyecto se deja a elección del usuario, con un mínimo de 20 horas dedicadas por el usuario.
